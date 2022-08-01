@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
 
@@ -28,8 +28,8 @@
             <div class="col-3">
                 <h3>Search By City</h3>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="City">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Search</button>
-                
+                <button id="btn" type="button" class="btn btn-primary btn-lg btn-block">Search</button>
+
 
             </div>
             <!-- end of search bar -->
@@ -37,6 +37,17 @@
 
             <!-- start of weather board -->
             <div class="col-9">
+                <!-- actual day forecast -->
+                <div id="current-city" class="current-city">
+                    <h4>City</h4>
+                    <p>Temperature:</p>
+                    <p>Humidity:</p>
+                    <p>wind:</p>
+                    <p>UV index:</p>
+                </div>
+                <div>
+                    <!-- add 5 day forecast for city -->
+                </div>
 
             </div>
             <!-- end of weather board -->
@@ -45,6 +56,7 @@
 
     </div>
     <!-- end container  -->
+    <script src="./assets/js/javascript.js"></script>
 </body>
 
 </html>
