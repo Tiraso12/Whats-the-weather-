@@ -27,7 +27,7 @@
             <!-- start of search bar -->
             <div class="col-3">
                 <h3>Search By City</h3>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="City">
+                <input type="text" class="form-control" id="city" placeholder="City">
                 <button id="btn" type="button" class="btn btn-primary btn-lg btn-block">Search</button>
 
 
@@ -39,11 +39,11 @@
             <div class="col-9">
                 <!-- actual day forecast -->
                 <div id="current-city" class="current-city">
-                    <h4>City:</h4>
-                    <p>Temperature:</p>
-                    <p>Humidity:</p>
-                    <p>wind:</p>
-                    <p>UV index:</p>
+                    <h4 id="cityName">City:</h4>
+                    <p id="tem">Temperature:</p>
+                    <p id="hum">Humidity:</p>
+                    <p id="wind">wind:</p>
+                    <p id="uv">UV index:</p>
                 </div>
                 <div>
                     <!-- add 5 day forecast for city -->
