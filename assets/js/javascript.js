@@ -35,8 +35,6 @@ function getApi(latitude, longitude) {
     })
     .then(function (data) {
         var imgCode = "http://openweathermap.org/img/wn/"+data.current.weather[0].icon+".png";
-            console.log(imgCode);
-            console.log(data);
             document.querySelector('#cityName').innerHTML ="City: " +" "+ cityName;
             document.querySelector("#img").setAttribute("src", imgCode);
             document.querySelector('#tem').innerHTML ="Temperature: " +" "+ data.current.temp + "°F";
