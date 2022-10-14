@@ -13,13 +13,11 @@ function getCity() {
             if (response.ok) {
                 response.json()
                     .then(function (data) {
-                        console.log(data);
                         var latitude = data[0].lat;
                         var longitude = data[0].lon;
                         cityName = data[0].name;
                         var latitude = latitude.toString();
                         var longitude = longitude.toString();
-                        console.log(latitude, longitude);
                         getApi(latitude, longitude);
                     });
             } else {
@@ -30,15 +28,21 @@ function getCity() {
 
 function getApi(latitude, longitude) {
     var requestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude={part}&appid=" + apiKey;
-
+    
     fetch(requestUrl)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        var imgCode = "http://openweathermap.org/img/wn/"+data.current.weather[0].icon+".png";
+            console.log(imgCode);
             console.log(data);
-            console.log(cityName);
             document.querySelector('#cityName').innerHTML ="City: " +" "+ cityName;
+            document.querySelector("#img").setAttribute("src", imgCode);
+            document.querySelector('#tem').innerHTML ="Temperature: " +" "+ data.current.temp + "°F";
+            document.querySelector('#hum').innerHTML ="Humidity: " +" "+ data.current.humidity+ "%";
+            document.querySelector('#wind').innerHTML ="Wind: " +" "+ data.current.wind_speed + " MPH";
+            document.querySelector('#uv').innerHTML ="UV index: " +" "+ data.current.uvi;
 
         })
 };
