@@ -2,7 +2,7 @@ var btnEl = document.getElementById('btn');
 var apiKey = "60c731acdd16090e93a89f08aee6e2e4";
 var cityName;
 var cityEl = document.querySelector('#city');
-var futureForecast =[];
+var futureForecast = [];
 
 
 
@@ -59,9 +59,46 @@ function futureApi(latitude, longitude) {
 }
 
 function createFuture(futureForecast) {
-    var col = $("<div></div>");
-
-    $("#future").append(col)
+    console.log(futureForecast);
+    for (let i = 0; i< 5; i++) {
+       
+        
+        var col = $("<div></div>");
+    
+        var cityTitle = $('<h4></h4>');
+        cityTitle.attr("id", "cityName");
+        cityTitle.text("City:");
+    
+        var image = $('<img></img>');
+        var imgCode = "http://openweathermap.org/img/wn/" + futureForecast[i].weather[0].icon + ".png";
+        image.attr({ src: imgCode, id: "img" });
+    
+        var temp = $('<p></p>');
+        temp.attr('id', "temp").text('Temperature: '+futureForecast[i].main.temp+'');
+        
+    
+        var hum = $('<p></p>');
+        hum.attr('id', '').text('Humidity:');
+    
+        var wind = $('<p></p>');
+        wind.attr('id', '').text('Wind:',);
+    
+        var uvi = $('<p></p>');
+        uvi.attr('id', '').text('Uv index:');
+    
+    
+    
+    
+    
+        col.append(cityTitle)
+        col.append(image);
+        col.append(temp);
+        col.append(hum);
+        col.append(wind);
+        col.append(uvi);
+        $("#future").append(col)
+        
+    }
 }
 
 btnEl.addEventListener("click", getCity);
