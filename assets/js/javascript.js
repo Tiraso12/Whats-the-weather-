@@ -42,7 +42,6 @@ function getApi(latitude, longitude) {
             document.querySelector('#tem').innerHTML = "Temperature: " + " " + data.current.temp + "°F";
             document.querySelector('#hum').innerHTML = "Humidity: " + " " + data.current.humidity + "%";
             document.querySelector('#wind').innerHTML = "Wind: " + " " + data.current.wind_speed + " MPH";
-            document.querySelector('#uv').innerHTML = "UV index: " + " " + data.current.uvi;
 
         })
 };
@@ -60,44 +59,40 @@ function futureApi(latitude, longitude) {
 
 function createFuture(futureForecast) {
     console.log(futureForecast);
-    for (let i = 0; i< 5; i++) {
-       
-        
+    for (let i = 0; i < 5; i++) {
+
+
         var col = $("<div></div>");
-    
+
         var cityTitle = $('<h4></h4>');
         cityTitle.attr("id", "cityName");
-        cityTitle.text("City:");
-    
+        cityTitle.text("DATE");
+
         var image = $('<img></img>');
         var imgCode = "http://openweathermap.org/img/wn/" + futureForecast[i].weather[0].icon + ".png";
         image.attr({ src: imgCode, id: "img" });
-    
+
         var temp = $('<p></p>');
-        temp.attr('id', "temp").text('Temperature: '+futureForecast[i].main.temp+'');
-        
-    
+        temp.attr('id', "temp").text('Temperature: ' + futureForecast[i].main.temp + '');
+
+
         var hum = $('<p></p>');
-        hum.attr('id', '').text('Humidity:');
-    
+        hum.attr('id', '').text('Humidity:'+futureForecast[i].main.humidity+'%');
+
         var wind = $('<p></p>');
-        wind.attr('id', '').text('Wind:',);
-    
-        var uvi = $('<p></p>');
-        uvi.attr('id', '').text('Uv index:');
-    
-    
-    
-    
-    
+        wind.attr('id', '').text('Wind:' + futureForecast[i].wind.speed + 'MPH',);
+
+
+
+
+
         col.append(cityTitle)
         col.append(image);
         col.append(temp);
         col.append(hum);
         col.append(wind);
-        col.append(uvi);
         $("#future").append(col)
-        
+
     }
 }
 
