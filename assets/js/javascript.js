@@ -5,10 +5,9 @@ var cityEl = document.querySelector('#city');
 var futureForecast = [];
 var newDate = new Date();
 
-console.log(newDate.toDateString());
-
 function getCity() {
     var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityEl.value + "&limit=1&appid=" + apiKey;
+
 
     fetch(apiUrl)
         .then((response) => {
@@ -20,6 +19,7 @@ function getCity() {
                         cityName = data[0].name;
                         var latitude = latitude.toString();
                         var longitude = longitude.toString();
+                        saveCity(cityEl.value);
                         getApi(latitude, longitude);
                         futureApi(latitude, longitude);
                     });
@@ -94,6 +94,12 @@ function createFuture(futureForecast) {
         $("#future").append(col)
 
     }
+}
+
+var cities = [];
+function saveCity(){
+    cities.push(cityEl.value);
+    localStorage.setItem('cities', JSON.stringify(cities));
 }
 
 btnEl.addEventListener("click", getCity);
