@@ -59,9 +59,8 @@ function futureApi(latitude, longitude) {
 }
 
 function createFuture(futureForecast) {
-    console.log(futureForecast);
+    $("#future").text('');
     for (let i = 7; i < 40; i+=8) {
-
 
         var col = $("<div></div>");
 
