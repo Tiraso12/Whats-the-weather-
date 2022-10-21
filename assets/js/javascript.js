@@ -3,8 +3,9 @@ var apiKey = "60c731acdd16090e93a89f08aee6e2e4";
 var cityName;
 var cityEl = document.querySelector('#city');
 var futureForecast = [];
+var newDate = new Date();
 
-
+console.log(newDate.toDateString());
 
 function getCity() {
     var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityEl.value + "&limit=1&appid=" + apiKey;
@@ -37,7 +38,7 @@ function getApi(latitude, longitude) {
         })
         .then(function (data) {
             var imgCode = "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png";
-            document.querySelector('#cityName').innerHTML = "City: " + " " + cityName;
+            document.querySelector('#cityName').innerHTML = "City: " + " " + cityName +" "+ newDate.toDateString();
             document.querySelector("#img").setAttribute("src", imgCode);
             document.querySelector('#tem').innerHTML = "Temperature: " + " " + data.current.temp + "°F";
             document.querySelector('#hum').innerHTML = "Humidity: " + " " + data.current.humidity + "%";
@@ -59,14 +60,14 @@ function futureApi(latitude, longitude) {
 
 function createFuture(futureForecast) {
     console.log(futureForecast);
-    for (let i = 0; i < 5; i++) {
+    for (let i = 7; i < 40; i+=8) {
 
 
         var col = $("<div></div>");
 
         var cityTitle = $('<h4></h4>');
         cityTitle.attr("id", "cityName");
-        cityTitle.text("DATE");
+        cityTitle.text(futureForecast[i].dt_txt);
 
         var image = $('<img></img>');
         var imgCode = "http://openweathermap.org/img/wn/" + futureForecast[i].weather[0].icon + ".png";
