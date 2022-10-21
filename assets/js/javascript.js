@@ -5,6 +5,8 @@ var cityEl = document.querySelector('#city');
 var futureForecast = [];
 var newDate = new Date();
 
+loadCities();
+
 function getCity() {
     var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityEl.value + "&limit=1&appid=" + apiKey;
 
@@ -20,6 +22,7 @@ function getCity() {
                         var latitude = latitude.toString();
                         var longitude = longitude.toString();
                         saveCity(cityEl.value);
+                        loadCities();
                         getApi(latitude, longitude);
                         futureApi(latitude, longitude);
                     });
@@ -38,7 +41,7 @@ function getApi(latitude, longitude) {
         })
         .then(function (data) {
             var imgCode = "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png";
-            document.querySelector('#cityName').innerHTML = "City: " + " " + cityName +" "+ newDate.toDateString();
+            document.querySelector('#cityName').innerHTML = "City: " + " " + cityName + " " + newDate.toDateString();
             document.querySelector("#img").setAttribute("src", imgCode);
             document.querySelector('#tem').innerHTML = "Temperature: " + " " + data.current.temp + "°F";
             document.querySelector('#hum').innerHTML = "Humidity: " + " " + data.current.humidity + "%";
@@ -60,7 +63,7 @@ function futureApi(latitude, longitude) {
 
 function createFuture(futureForecast) {
     $("#future").text('');
-    for (let i = 7; i < 40; i+=8) {
+    for (let i = 7; i < 40; i += 8) {
 
         var col = $("<div></div>");
 
@@ -77,7 +80,7 @@ function createFuture(futureForecast) {
 
 
         var hum = $('<p></p>');
-        hum.attr('id', '').text('Humidity:'+futureForecast[i].main.humidity+'%');
+        hum.attr('id', '').text('Humidity:' + futureForecast[i].main.humidity + '%');
 
         var wind = $('<p></p>');
         wind.attr('id', '').text('Wind:' + futureForecast[i].wind.speed + 'MPH',);
@@ -97,9 +100,20 @@ function createFuture(futureForecast) {
 }
 
 var cities = [];
-function saveCity(){
+function saveCity() {
     cities.push(cityEl.value);
     localStorage.setItem('cities', JSON.stringify(cities));
 }
+
+function loadCities() {
+    var x = JSON.parse(localStorage.getItem('cities'))
+    for (let i = 0; i < x.length; i++) {
+
+        var list = $('<li></li>');
+        list.text(x[i]);
+        $('#history').append(list);
+    }
+}
+
 
 btnEl.addEventListener("click", getCity);
