@@ -9,10 +9,7 @@ Weahter application that shows the actual weather of a city and the next 5 days 
 
  
 ## Table of Content
-- [Usage](#usage)
-- [License](#license)
 - [Contributing](#contributing)
-- [Test](#test)
 - [Questions](#questions)
  
  
