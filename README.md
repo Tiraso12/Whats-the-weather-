@@ -7,6 +7,8 @@ Weahter application that shows the actual weather of a city and the next 5 days 
 
 [Link to the application!](...)
 
+![](./assets/img/page.png)
+
  
 ## Table of Content
 - [Contributing](#contributing)
