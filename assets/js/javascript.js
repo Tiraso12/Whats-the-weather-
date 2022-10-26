@@ -5,7 +5,7 @@ var cityEl = document.querySelector('#city');
 var futureForecast = [];
 var newDate = new Date();
 
-loadCities();
+// loadCities();
 
 function getCity() {
     var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityEl.value + "&limit=1&appid=" + apiKey;
@@ -66,6 +66,7 @@ function createFuture(futureForecast) {
     for (let i = 7; i < 40; i += 8) {
 
         var col = $("<div></div>");
+        col.attr("class", 'card-forecast');
 
         var cityTitle = $('<h4></h4>');
         cityTitle.attr("id", "cityName");

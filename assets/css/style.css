@@ -1,8 +1,13 @@
 .title{
     font-size: 50px;
-    text-align: center;
 }
 
 .current-city{
    border-style: ridge;
+}
+
+.card-forecast{
+    margin: 5px;
+    background-color: blue;
+    padding: 3px;
 }
