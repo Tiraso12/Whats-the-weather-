@@ -66,7 +66,7 @@ function createFuture(futureForecast) {
     for (let i = 7; i < 40; i += 8) {
 
         var col = $("<div></div>");
-        col.attr("class", 'card-forecast');
+        col.attr("class", 'card-forecast card-style p-2');
 
         var cityTitle = $('<h4></h4>');
         cityTitle.attr("id", "cityName");
@@ -89,7 +89,7 @@ function createFuture(futureForecast) {
 
 
 
-
+        $(".display").removeClass('display');
         col.append(cityTitle)
         col.append(image);
         col.append(temp);

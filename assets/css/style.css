@@ -4,10 +4,16 @@
 
 .current-city{
    border-style: ridge;
+   border: solid;
+   border-radius: 1.25rem;
 }
 
-.card-forecast{
-    margin: 5px;
-    background-color: blue;
-    padding: 3px;
+.card-style{
+    border: solid;
+    border-radius: 1.25rem;
+    margin: 0.5rem;
+}
+
+.display{
+    display:none;
 }
