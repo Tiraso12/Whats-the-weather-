@@ -5,7 +5,7 @@ var cityEl = document.querySelector('#city');
 var futureForecast = [];
 var newDate = new Date();
 
-// loadCities();
+loadCities();
 
 function getCity() {
     var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityEl.value + "&limit=1&appid=" + apiKey;
@@ -22,7 +22,6 @@ function getCity() {
                         var latitude = latitude.toString();
                         var longitude = longitude.toString();
                         saveCity(cityEl.value);
-                        loadCities();
                         getApi(latitude, longitude);
                         futureApi(latitude, longitude);
                     });
@@ -102,6 +101,7 @@ function createFuture(futureForecast) {
 
 var cities = [];
 function saveCity() {
+    //gotta fix overwriting cities when pushin with same key, have to getItem, update , and then push again
     cities.push(cityEl.value);
     localStorage.setItem('cities', JSON.stringify(cities));
 }
@@ -110,8 +110,8 @@ function loadCities() {
     var x = JSON.parse(localStorage.getItem('cities'))
     for (let i = 0; i < x.length; i++) {
 
-        var list = $('<li></li>');
-        list.text(x[i]);
+        var list = $('<a></a>');
+        list.text(x[i]).attr({class:"list-group-item list-group-item-action"});
         $('#history').append(list);
     }
 }
