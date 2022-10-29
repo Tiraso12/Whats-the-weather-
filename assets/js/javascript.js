@@ -6,7 +6,7 @@ var futureForecast = [];
 var newDate = new Date();
 var cities;
 
-// loadCities();
+loadCities();
 
 function getCity() {
     var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityEl.value + "&limit=1&appid=" + apiKey;
@@ -32,8 +32,8 @@ function getCity() {
                         if (cities.includes(cityName) === false) {
                             cities.push(cityName);
                         }
-
                         saveCity()
+                        loadCities()
                         getApi(latitude, longitude);
                         futureApi(latitude, longitude);
                     });
@@ -120,18 +120,24 @@ function saveCity() {
 function loadCities() {
 
     var x = JSON.parse(localStorage.getItem('cities'))
-    if (x.length === null) {
+    $('#history').html('');
+    if (x === null) {
         return;
     } else {
 
         for (let i = 0; i < x.length; i++) {
-
-            var list = $('<a></a>');
-            list.text(x[i]).attr({ class: "list-group-item list-group-item-action" });
-            $('#history').append(list);
+            const city = x[i]
+            var listEl = $('<a></a>');
+            listEl.text(x[i]).attr({ data: city, class: "list-group-item list-group-item-action", });
+            $('#history').append(listEl);
         }
     }
-}
+};
+
+$('#history').on('click', function (event) {
+    var cityBtn = $(this).attr("data");
+    console.log(cityBtn);
+});
 
 
 btnEl.addEventListener("click", getCity);
