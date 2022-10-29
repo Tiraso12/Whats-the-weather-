@@ -1,7 +1,6 @@
 var btnEl = document.getElementById('btn');
 var apiKey = "60c731acdd16090e93a89f08aee6e2e4";
 var cityName;
-var cityEl = document.querySelector('#city');
 var futureForecast = [];
 var newDate = new Date();
 var cities;
@@ -9,6 +8,7 @@ var cities;
 loadCities();
 
 function getCity() {
+    var cityEl = document.querySelector('#city');
     var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityEl.value + "&limit=1&appid=" + apiKey;
 
 
@@ -36,6 +36,7 @@ function getCity() {
                         loadCities()
                         getApi(latitude, longitude);
                         futureApi(latitude, longitude);
+                        $('#city').val('');
                     });
             } else {
                 alert("Location Not Found");
@@ -134,10 +135,19 @@ function loadCities() {
     }
     $('a').click(function (event) {
         var cityBtn = $(this).attr('data');
-        console.log(cityBtn);
+        $('#city').val('');
+        $('#city').val(cityBtn);
+        getCity();
+
     });
 };
 
-    
+$('#clear').click(function (e) {
+    localStorage.clear();
+    window.location.reload();
+});
+
+
+
 
 btnEl.addEventListener("click", getCity);
