@@ -128,16 +128,16 @@ function loadCities() {
         for (let i = 0; i < x.length; i++) {
             const city = x[i]
             var listEl = $('<a></a>');
-            listEl.text(x[i]).attr({ data: city, class: "list-group-item list-group-item-action", });
+            listEl.text(x[i]).attr({ id: 'cityId', data: city, class: "list-group-item list-group-item-action", });
             $('#history').append(listEl);
         }
     }
+    $('a').click(function (event) {
+        var cityBtn = $(this).attr('data');
+        console.log(cityBtn);
+    });
 };
 
-$('#history').on('click', function (event) {
-    var cityBtn = $(this).attr("data");
-    console.log(cityBtn);
-});
-
+    
 
 btnEl.addEventListener("click", getCity);
