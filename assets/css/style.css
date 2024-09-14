@@ -73,6 +73,8 @@ margin: auto;
     border-style: none;
     font-size: 20px;
     font-family: 'Roboto';
+    border-bottom: 3px solid black
+
 }
 
 .form__search button{ 
