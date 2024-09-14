@@ -5,32 +5,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Weather Dashboard</title>
 </head>
 
 <body>
-    <!-- start container -->
-    <div class="container-fluid">
-        <!-- start header section -->
-        <header class="row">
-            <div class="col-12">
-                <h1 class="title">Weather Dashboard</h1>
+    <div class="container">
+        <div class="weather">
+            <h1 class="header__title">Weather Dashboard</h1>
+            <div class="weather__details">
+                <h2>64&deg</h2>
+                <p>Florida</p>
+                <p>weather Icon</p>
             </div>
-        </header>
+        </div>
         <!-- end header section  -->
-
         <!--start search bar and weather board  -->
-        <div class="row">
+        <div class="">
             <!-- start of search bar -->
-            <div class="col-2">
-                <h3>Search By City</h3>
-                <input type="text" class="form-control" id="city" placeholder="City">
-                <button id="btn" type="button" class="btn btn-primary btn-lg btn-block">Search</button>
-                <h4>orlando</h4>
+            <div class="">
+                <h2 class="">City</h2>
+                <input type="" class="" id="city" placeholder="city name">
+                <button id="btn" type="button" class="">Search</button>
+            <div class="">
+                <ul class="" id="history">
+                </ul>
+                <button id="clear" type="button" class="btn">Clear</button>
+            </div>
 
 
             </div>
@@ -38,34 +43,34 @@
 
 
             <!-- start of weather board -->
-            <div class="col-9">
+            <div class="">
                 <!-- actual day forecast -->
-                <div id="current-city" class="current-city">
-                    <h4 id="cityName">City:</h4>
-                    <img src="" alt="" id="img">
-                    <p id="tem">Temperature:</p>
-                    <p id="hum">Humidity:</p>
-                    <p id="wind">wind:</p>
+                <div id="current-city" class="mt-3 current-city ">
+                    <h4 id="cityName" class="p-2">City:</h4>
+                    <img src="" alt="" id="img" class="p-2">
+                    <p id="tem" class="p-2">Temperature:</p>
+                    <p id="hum" class="p-2">Humidity:</p>
+                    <p id="wind" class="p-2">wind:</p>
                 </div>
-                <div>
+
+                <div class="row mt-3 justify-content-center">
                     <!-- add 5 day forecast for city -->
-                    <h5><strong>5-Day Forecast:</strong></h5>
+                    <h5 class="display"><strong>Next 5 Days Weather</strong></h5>
+                    <div class="p-2 d-flex" id="future">
+                        <!-- <div class="col">
+                            <h4 id="cityName">City:</h4>
+                            <img src="" alt="" id="img">
+                            <p id="tem">Temperature:</p>
+                            <p id="hum">Humidity:</p>
+                            <p id="wind">wind:</p>
+                        </div> -->
+                    </div>
                 </div>
 
             </div>
-            
+
         </div>
         <!-- end of weather board -->
-        <div class="row row-cols-5" id="future">
-            <!-- <div class="col">
-                <h4 id="cityName">City:</h4>
-                <img src="" alt="" id="img">
-                <p id="tem">Temperature:</p>
-                <p id="hum">Humidity:</p>
-                <p id="wind">wind:</p>
-                <p id="uv">UV index:</p>
-            </div> -->
-        </div>
         <!-- end container  -->
         <script src="./assets/js/javascript.js"></script>
 </body>

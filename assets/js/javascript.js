@@ -7,7 +7,7 @@ var futureForecast = [];
 
 
 function getCity() {
-    var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityEl.value + "&limit=1&appid=" + apiKey;
+    // var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityEl.value + "&limit=1&appid=" + apiKey;
 
     fetch(apiUrl)
         .then((response) => {

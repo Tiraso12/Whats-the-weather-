@@ -1,8 +1,50 @@
-.title{
-    font-size: 50px;
-    text-align: center;
+html{
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
 }
 
-.current-city{
-   border-style: ridge;
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+display: flex;
+justify-content: space-between;
+max-width: 1440px;
+margin: auto;
+}
+
+.weather{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding-left: 64px;
+    width: 60%;
+    height: 100vh;
+
+    justify-content: space-around;
+}
+
+.header__title{
+   font-weight: 600;
+}
+
+.weather__details{
+    display: flex;
+    height: 20%;
+    gap: 20px;
+   font-weight: 600;
+   align-items: center;
+}
+
+.weather__details h2{
+    font-size: 16rem;
+    font-weight: 600;
+}
+
+.weather p {
+    font-size: 8rem;
+    font-weight: 400;
 }
