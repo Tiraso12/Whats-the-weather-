@@ -27,6 +27,7 @@ margin: auto;
 
 .header__title{
    font-weight: 600;
+   text-transform: uppercase;
 }
 
 .weather__details{
@@ -81,7 +82,7 @@ margin: auto;
     position: absolute;
         background-color: #;
         border: none;
-        padding: 15px 32px;
+        padding: 45px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -90,3 +91,14 @@ margin: auto;
         right: 0;
       }
 
+        .form__search button:hover{
+            background-color: #;
+            color: white;
+            cursor: pointer;
+        }
+
+    .city__list{
+        padding: 0 40px;
+        list-style: none;
+        margin-top: 24px;
+    }
