@@ -41,6 +41,8 @@ margin: auto;
     margin-bottom: 80px;
 }
 
+.weather__details--1{}
+
 .weather__details--1 h2{
     font-size: 30px;
 }
