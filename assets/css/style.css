@@ -10,110 +10,63 @@ html{
 }
 
 .container{
-display: flex;
-justify-content: space-between;
 max-width: 1440px;
 margin: auto;
 }
 
-.section__weather{
-    display: flex;
-    flex-direction: column;
-    padding: 64px;
-    width: 60%;
-    height: 100vh;
-    justify-content: space-between;
+.header{
+    padding: 30px 60px;
+    text-align: center;
+    font-size: large;
 }
 
-.header__title{
-   font-weight: 600;
-   text-transform: uppercase;
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather__container{
+    width: 80%;
+    height: 70vh;
+    border: 1px solid #000;
+    border-radius: 30px;
+
 }
 
 .weather__details{
     display: flex;
-    height: 20%;
     justify-content: space-between;
-    font-weight: 600;
-    align-items: center;
-    padding-right: 3rem;
+    padding: 40px 30px;
+    margin-bottom: 80px;
 }
 
-.weather__details h2{
-    font-size: 16rem;
-    font-weight: 600;
+.weather__details--1 h2{
+    font-size: 30px;
+}
+.weather__details--1 p{
+    font-size: 60px;
+}
+.weather__details--2 p{
+    font-size: 20px;
 }
 
-.weather__details p {
-    font-size: 4rem;
-    font-weight: 400;
+.weather__future--details{
+    display: flex;
+    padding: 15px 30px;
+    justify-content: space-between;
 }
 
-.section__dashboard{
+.weather__card{
     display: flex;
     flex-direction: column;
-    padding: 64px;
-    width: 60%;
-    height: 100vh;
-    justify-content: space-between;
-    position: relative;
-}
-
-.city{
-    height: 50%;
-    padding: 24px;
+    justify-content: space-around;
+    align-items: center;
+    width: 15%;
+    height: 200px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    
 }
 
 
-.form__search{
-    display: flex;
-    padding-left: 40px;
-    margin-bottom: 60px;
-}
-
-.form__search input{
-    padding: 1rem;
-    border-style: none;
-    font-size: 26px;
-    font-family: 'Roboto';
-    border-bottom: 3px solid black;
-    width: 60%;
-
-}
-
-.form__search button{ 
-    position: absolute;
-        background-color: #;
-        border: none;
-        padding: 45px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        top:0;
-        right: 0;
-      }
-
-        .form__search button:hover{
-            background-color: #;
-            color: white;
-            cursor: pointer;
-        }
-
-    .city__list{
-        padding: 30px 40px;
-        list-style: none;
-        display: flex  ;
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .city__list li{
-        font-size: 20px;
-    }
-
-    .city__details{
-        height: 50%;
-        padding: 24px;
-
-    }
