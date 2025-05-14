@@ -1,53 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>Weather Dashboard</title>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
-    <div class="container">
-        <section class="section__weather">
-            <h1 class="header__title">Weather Dashboard</h1>
-            <div class="weather__details">
-                <h2>64&deg</h2>
-                <p>Florida</p>
-                <p>Icon</p>
-            </div>
-        </section>
+    <div class="weather-app">
+        <div class="search-container">
+            <input type="text" id="city-input" placeholder="Search City, State, or Country...">
+            <button id="search-button"><i class="fas fa-search"></i></button>
+        </div>
 
-        <section class="section__dashboard">
-            <div class="city">
-                <form class="form__search">
-                    <input type="" class="" id="city" placeholder="another location">
-                    <button id="btn" type="button" class="">Search</button>
-                </form>
-                <ul class="city__list" id="history">
-                        <li><p>TEST</p></li>
-                        <li><p>TEST</p></li>
-                        <li><p>TEST</p></li>
-                        <li><p>TEST</p></li>
-                </ul>
+        <div class="main-weather-info hidden">
+            <div id="location" class="location">--</div>
+            <div id="temperature" class="temperature">--°</div>
+            <div id="condition" class="condition">--</div>
+            <div id="high-low" class="high-low">H:--° L:--°</div>
+            <img id="current-weather-icon" src="" alt="weather icon" class="weather-icon-large">
+        </div>
+
+        <div class="forecast-container hidden">
+            <div class="hourly-forecast">
+                <h4>HOURLY FORECAST</h4>
+                <div class="scrollable-forecast" id="hourly-forecast-items">
+                    <!-- Hourly items will be injected here -->
+                </div>
             </div>
-            <div class="city__details">
-                <ul class="city__list" id="history">
-                        <li><p>TEST</p></li>
-                        <li><p>TEST</p></li>
-                        <li><p>TEST</p></li>
-                        <li><p>TEST</p></li>
-                </ul>
+
+            <div class="daily-forecast">
+                <h4>7-DAY FORECAST (SIMPLIFIED)</h4>
+                <div id="daily-forecast-items">
+                    <!-- Daily items will be injected here -->
+                </div>
             </div>
-        </section>
+        </div>
+         <div id="error-message" class="error-message hidden"></div>
     </div>
-        <script src="./assets/js/javascript.js"></script>
-</body>
 
+    <script src="javascript.js"></script>
+</body>
 </html>
