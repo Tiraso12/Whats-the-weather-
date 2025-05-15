@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const apiKey = "60c731acdd16090e93a89f08aee6e2e4"; // <-- IMPORTANT: REPLACE WITH YOUR KEY
     const cityInput = document.getElementById('city-input');
@@ -9,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const conditionEl = document.getElementById('condition');
     const highLowEl = document.getElementById('high-low');
     const currentWeatherIconEl = document.getElementById('current-weather-icon');
-    
+
     const hourlyForecastItemsEl = document.getElementById('hourly-forecast-items');
     const dailyForecastItemsEl = document.getElementById('daily-forecast-items');
 
@@ -59,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const currentWeatherData = await currentWeatherResponse.json();
             const forecastData = await forecastResponse.json();
-            
+
             displayCurrentWeather(currentWeatherData);
             displayHourlyForecast(forecastData);
             displayDailyForecast(forecastData);
@@ -82,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         conditionEl.textContent = data.weather[0].description;
         currentWeatherIconEl.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
         currentWeatherIconEl.alt = data.weather[0].description;
-        
+
         // For High/Low, we'll use today's forecast data later, but for now, current data
         highLowEl.textContent = `H:${Math.round(data.main.temp_max)}° L:${Math.round(data.main.temp_min)}°`;
     }
@@ -108,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayDailyForecast(data) {
         dailyForecastItemsEl.innerHTML = ''; // Clear previous items
-        
+
         // Group forecasts by day
         const dailyData = {};
         data.list.forEach(item => {
@@ -139,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Simplistic icon choice: use the icon from around midday if available, or first one
             const representativeIcon = dayInfo.icons[Math.floor(dayInfo.icons.length / 2)] || dayInfo.icons[0];
             const representativeDescription = dayInfo.descriptions[Math.floor(dayInfo.descriptions.length / 2)] || dayInfo.descriptions[0];
-            
+
             const dayName = dayCount === 0 ? "Today" : dayInfo.dateObj.toLocaleDateString([], { weekday: 'short' });
 
             const dailyItem = `
@@ -160,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
              highLowEl.textContent = `H:${todayMax}° L:${todayMin}°`;
         }
     }
-    
+
     function displayError(message) {
         errorMessageEl.textContent = message;
         errorMessageEl.classList.remove('hidden');
@@ -169,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function hideError() {
         errorMessageEl.classList.add('hidden');
     }
-    
+
     function showLoadingPlaceholders() {
         // You can make this more sophisticated with actual shimmer effects
         locationEl.textContent = "Loading...";
