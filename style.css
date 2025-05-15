@@ -16,7 +16,7 @@ body, html {
     padding: 20px;
     box-sizing: border-box;
     /* Replace with your actual sky image URL */
-    background-image: url("./assets/images/dominik-schroder-FIKD9t5_5zQ-unsplash.jpg");
+    background-image: url("./assets/images/backgroundAppImg.jpg");
     background-size: cover;
     background-position: center;
     overflow-y: auto; /* Allow scrolling within the app if content overflows */
