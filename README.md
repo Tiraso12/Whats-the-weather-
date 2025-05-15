@@ -7,7 +7,7 @@ Weahter application that shows the actual weather of a city and the next 5 days 
 
 [Link to the application!](https://tiraso12.github.io/Whats-the-weather-/)
 
-![](./assets/images/screenshotApp.png.png)
+![](./assets/images/screenshotApp.png)
 
  
 ## Table of Content
