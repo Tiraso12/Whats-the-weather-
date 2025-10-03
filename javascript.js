@@ -35,11 +35,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- API Fetching ---
     async function fetchWeatherData(city) {
-        hideError();
-        showLoadingPlaceholders(); // Optional: show some loading state
-
         const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`; // or imperial for Fahrenheit
         const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
+        await fetchAndDisplayWeather(currentWeatherUrl, forecastUrl);
+    }
+
+    async function fetchWeatherDataByCoordinates(lat, lon) {
+        const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+        await fetchAndDisplayWeather(currentWeatherUrl, forecastUrl);
+    }
+
+    async function fetchAndDisplayWeather(currentWeatherUrl, forecastUrl) {
+        hideError();
+        showLoadingPlaceholders();
 
         try {
             const [currentWeatherResponse, forecastResponse] = await Promise.all([
@@ -62,9 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
             displayCurrentWeather(currentWeatherData);
             displayHourlyForecast(forecastData);
             displayDailyForecast(forecastData);
-
-            mainWeatherInfoEl.classList.remove('hidden');
-            forecastContainerEl.classList.remove('hidden');
 
         } catch (error) {
             console.error("Error fetching weather data:", error);
@@ -171,15 +179,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showLoadingPlaceholders() {
         // You can make this more sophisticated with actual shimmer effects
+        mainWeatherInfoEl.classList.remove('hidden');
+        forecastContainerEl.classList.remove('hidden');
         locationEl.textContent = "Loading...";
         temperatureEl.textContent = "--°";
         conditionEl.textContent = "--";
         highLowEl.textContent = "H:--° L:--°";
         currentWeatherIconEl.src = "";
+        currentWeatherIconEl.alt = "Loading weather icon";
         hourlyForecastItemsEl.innerHTML = '<div class="hourly-item">...</div>'.repeat(5);
         dailyForecastItemsEl.innerHTML = '<div class="daily-item">Loading...</div>'.repeat(5);
     }
 
-    // Optional: Load a default city on startup
-    // fetchWeatherData("London"); 
+    function requestUserLocation() {
+        if (!navigator.geolocation) {
+            displayError("Geolocation is not supported by this browser. Please search for a location.");
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                fetchWeatherDataByCoordinates(latitude, longitude);
+            },
+            (error) => {
+                console.warn("Geolocation error:", error);
+                let message = "Unable to retrieve your location. Please search for a city.";
+                if (error.code === error.PERMISSION_DENIED) {
+                    message = "Location access denied. Please search for a city.";
+                }
+                displayError(message);
+            }
+        );
+    }
+
+    requestUserLocation();
 });
